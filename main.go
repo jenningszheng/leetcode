@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"leetcode/lexicographical-numbers"
+	shortest_distance_to_a_character "leetcode/shortest-distance-to-a-character"
 )
 
 func main() {
-	ans := lexicographical_numbers.LexicalOrder(10)
+	ans := shortest_distance_to_a_character.ShortestToChar("abaa", []byte("b")[0])
 	fmt.Println(ans)
 }
