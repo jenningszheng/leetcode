@@ -14,20 +14,19 @@ func longestPath(input string, level int) (int, int) {
 	for i < n {
 		ch := input[i]
 		switch ch {
-		case enter: // 中间节点
+		case enter: // 中间节点已结束，此时要进入子节点或者返回到父节点
 			i++
 			nextLevel := 0
-			// 遇到 \t 的时候，表示要进入子节点或者返回到父节点
+			// 计算下一节点所在的层级，以此来判断是进入子节点还是返回到父节点
 			for i < n && input[i] == tab {
 				i++
 				nextLevel++
 			}
-			// 层级为0，直接返回到根节点
-			if nextLevel == 0 {
-				return ans, i - 1
-			}
-			// 下一层级比当前层级小，要返回到父节点
-			if nextLevel <= level || i >= n {
+			// 以下情况要返回到父节点：
+			//   - nextLevel 为 0，表示下一节点是根节点的子节点
+			//   - 下一层级比当前层级小
+			//   - 字符串遍历完毕
+			if nextLevel == 0 || nextLevel <= level || i >= n {
 				return ans, i - nextLevel - 1
 			}
 			// 进入子节点
