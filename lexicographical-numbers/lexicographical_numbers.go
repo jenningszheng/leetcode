@@ -5,7 +5,7 @@ func LexicalOrder(n int) []int {
 	num := 1
 	for i := range ans {
 		ans[i] = num
-		if num * 10 <= n {
+		if num*10 <= n {
 			num = num * 10
 		} else {
 			for {
